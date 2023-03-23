@@ -89,8 +89,7 @@
             borderWidth: 1, 
             highlightBorderWidth: 3, 
             highlightFillColor: "rgba(0,123,255,0.5)", 
-            highlightBorderColor: "transparent", 
-            borderWidth: 1
+            highlightBorderColor: "transparent",
         }, 
         bubblesConfig: {
             popupTemplate: function (e, i) {
