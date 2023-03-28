@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @MapperScan("org/csu/petstoremanage/mapper")
+@MapperScan("org.csu.petstoremanage.persistence")
 public class PetstoreManageApplication {
 
     public static void main(String[] args) {

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>宠物商店管理系统前端模板</title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+    <!-- Custom Stylesheet -->
+    <link href="/plugins/tables/css/datatable/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+<!--*******************
+    Preloader start
+********************-->
+<div id="preloader">
+    <div class="loader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+        </svg>
+    </div>
+</div>
+<!--*******************
+    Preloader end
+********************-->
+
+
+<!--**********************************
+    Main wrapper start
+***********************************-->
+<div id="main-wrapper">
+
+    <!--**********************************
+        左上角那个蓝紫色-start
+    ***********************************-->
+    <div class="nav-header">
+        <div class="brand-logo">
+            <a href="main_template.html">
+                <h4 class="card-title">宠物商店管理系统</h4>
+                <!-- <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
+                <span class="logo-compact"><img src="./images/logo-compact.png" alt=""></span>
+                <span class="brand-title">
+                    <img src="images/logo-text.png" alt="">
+                </span> -->
+            </a>
+        </div>
+    </div>
+    <!--**********************************
+        左上角那个蓝紫色-end
+    ***********************************-->
+
+    <!--**********************************
+        蓝紫色的右边那一坨-start
+    ***********************************-->
+    <div class="header">
+        <div class="header-content clearfix">
+
+            <div class="nav-control">
+                <div class="hamburger">
+                    <span class="toggle-icon"><i class="icon-menu"></i></span>
+                </div>
+            </div>
+            <div class="header-right">
+                <ul class="clearfix">
+                    <li class="icons dropdown">
+                        <div class="user-img c-pointer position-relative"   data-toggle="dropdown">
+                            <span class="activity active"></span>
+                            <img src="../static/images/1.png" height="40" width="40" alt="">
+                        </div>
+                        <div class="drop-down dropdown-profile   dropdown-menu">
+                            <div class="dropdown-content-body">
+                                <ul>
+                                    <li>
+                                        <a href="profile.html"><i class="icon-user"></i> <span>Profile</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="email.html"><i class="icon-envelope-open"></i> <span>Inbox</span> <div class="badge gradient-3 badge-pill badge-primary">3</div></a>
+                                    </li>
+
+                                    <hr class="my-2">
+                                    <li>
+                                        <a href="page-lock.html"><i class="icon-lock"></i> <span>Lock Screen</span></a>
+                                    </li>
+                                    <li><a href="page-login.html"><i class="icon-key"></i> <span>Logout</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--**********************************
+        蓝紫色的右边那一坨-end
+    ***********************************-->
+
+    <!--**********************************
+        左边侧目录-start
+    ***********************************-->
+    <div class="nk-sidebar">
+        <div class="nk-nav-scroll">
+            <ul class="metismenu" id="menu">
+                <li class="mega-menu mega-menu-sm">
+                    <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">
+                        <i class="icon-globe-alt menu-icon"></i><span class="nav-text">商品管理模块</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        <li><a href="category.html">Category</a></li>
+                        <li><a href="item.html">Item</a></li>
+                        <li><a href="product.html">Product</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">
+                        <i class="icon-screen-tablet menu-icon"></i> <span class="nav-text">用户管理模块</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="register.html">Register</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">
+                        <i class="icon-notebook menu-icon"></i><span class="nav-text">订单管理模块</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        <li><a href="no_payment.html">未支付订单</a></li>
+                        <li><a href="wait_payment.html">待处理订单</a></li>
+                        <li><a href="dealed_payment.html">已处理订单</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">
+                        <i class="icon-bubble"></i> <span class="nav-text">评论管理模块</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        <li><a href="/reviewtable">评论信息表</a></li>
+                        <li><a href="/reviewstatistic">评论统计</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--**********************************
+        左边侧目录-end
+    ***********************************-->
+
+    <!--**********************************
+        Content body start
+    ***********************************-->
+    <div class="content-body">
+        <input type="hidden" th:value="${reviewListJSON}" id="reviewData">
+        <div class="container-fluid">
+            <div class="row" style="margin-top: 20px">
+                <!-- Single Bar Chart -->
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">商品评论统计</h4>
+                            <div style="position: absolute;right: 50px;">
+                                <h5 style='display:inline;color:#76838f'>统计选项：  </h5>
+                                <select id="select1" style="color: #76838f;font-weight: bold;width: 100px;height: 30px;">
+                                    <option value="评论数量">评论数量</option>
+                                    <option value="平均评分">平均评分</option>
+                                </select>
+                            </div>
+                            <canvas id="singleBarChart1" width="500" height="250" style="margin-top: 30px"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="margin-top: 10px">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">评分统计</h4>
+                            <div style="position: absolute;right: 50px;">
+                                <h5 style='display:inline;color:#76838f'>商品：  </h5>
+                                <select id="select2" style="color: #76838f;font-weight: bold;width: 100px;height: 30px;">
+                                </select>
+                            </div>
+                            <canvas id="singleBarChart2" width="500" height="250" style="margin-top: 30px"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- #/ container -->
+    </div>
+    <!--**********************************
+        Content body end
+    ***********************************-->
+
+
+    <!--**********************************
+        Footer start
+    ***********************************-->
+    <div class="footer">
+        <div class="copyright">
+            <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a> 2018</p>
+        </div>
+    </div>
+    <!--**********************************
+        Footer end
+    ***********************************-->
+</div>
+<!--**********************************
+    Main wrapper end
+***********************************-->
+
+<!--**********************************
+    Scripts
+***********************************-->
+    <script src="plugins/common/common.min.js"></script>
+    <script src="./js/custom.min.js"></script>
+
+    <script src="https://cdn.staticfile.org/Chart.js/3.9.1/chart.js"></script>
+    <script src="./js/settings.js"></script>
+    <script src="./js/gleek.js"></script>
+    <script src="./js/styleSwitcher.js"></script>
+    <script src="./js/review/reviewstatistic.js"></script>
+
+</body>
+
+</html>
